@@ -10,16 +10,18 @@ def main():
     guitar_name = get_valid_string("Name: ")
     while guitar_name != "":
         guitar_year = get_valid_integer("Year: ")
-        guitar_cost = get_valid_float("Cost: ")
+        guitar_cost = get_valid_float("Cost: $")
         guitars.append(Guitar(guitar_name, guitar_year, guitar_cost))
+        print(f"{guitar_name} ({guitar_year}) : ${guitar_cost:.2f} added.\n")
         guitar_name = get_valid_string("Name: ")
+    print("These are my guitars:")
     display_all_guitars(guitars)
 
 
 def display_all_guitars(guitars):
     """Display all guitars in a list in a neat format."""
     for i, guitar in enumerate(guitars):
-        print_format = f"Guitar {i+1}: {guitar.name} ({guitar.year}), worth ${guitar.cost:.2f}"
+        print_format = f"Guitar {i+1}: {guitar.name:<20} ({guitar.year}), worth ${guitar.cost:>10.2f}"
         if not guitar.is_vintage():
             print(print_format)
         else:
