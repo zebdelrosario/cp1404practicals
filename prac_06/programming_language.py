@@ -2,6 +2,7 @@
 
 
 class ProgrammingLanguage:
+    """Represent a Programming Language object."""
     def __init__(self, language="", typing="", reflection="", year=0):
         self.language = language
         self.typing = typing
@@ -12,6 +13,7 @@ class ProgrammingLanguage:
         return f"{self.language}, {self.typing}, {self.reflection}, First appeared in {self.year}"
 
     def is_dynamic(self):
+        """Determine if object is dynamic."""
         if self.typing.lower() == "dynamic":
             return True
         return False
