@@ -6,8 +6,9 @@ class Car:
 
     def __init__(self, name="", fuel=0):
         """Initialise a Car instance.
-
+        name: type of vehicle (e.g.: limo, truck etc.)
         fuel: float, one unit of fuel drives one kilometre
+        odometer: current kilometers travelled
         """
         self.name = name
         self.fuel = fuel
