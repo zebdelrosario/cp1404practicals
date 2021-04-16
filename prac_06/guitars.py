@@ -5,10 +5,25 @@ MINIMUM_VALUE = 0
 
 def main():
     """Store all of input guitars in a list, then print their details."""
+    guitars = []
     print("My guitars!")
     guitar_name = get_valid_string("Name: ")
-    guitar_year = get_valid_integer("Year: ")
-    guitar_cost = get_valid_float("Cost: ")
+    while guitar_name != "":
+        guitar_year = get_valid_integer("Year: ")
+        guitar_cost = get_valid_float("Cost: ")
+        guitars.append(Guitar(guitar_name, guitar_year, guitar_cost))
+        guitar_name = get_valid_string("Name: ")
+    display_all_guitars(guitars)
+
+
+def display_all_guitars(guitars):
+    """Display all guitars in a list in a neat format."""
+    for i, guitar in enumerate(guitars):
+        print_format = f"Guitar {i+1}: {guitar.name} ({guitar.year}), worth ${guitar.cost:.2f}"
+        if not guitar.is_vintage():
+            print(print_format)
+        else:
+            print(print_format + " (vintage)")
 
 
 def get_valid_string(prompt):
