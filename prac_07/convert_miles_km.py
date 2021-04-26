@@ -8,6 +8,7 @@ from kivy.core.window import Window
 
 __author__ = "Zeb del Rosario"
 
+MILES_TO_KM_RATE = 1.609323529411765
 
 class ConvertMilesToKmApp(App):
     """ConvertMilesToKmApp is a Kivy app that converts miles to km."""
@@ -20,14 +21,15 @@ class ConvertMilesToKmApp(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-    def handle_calculation(self, value):
-        """Convert miles to kilometres, output result to """
-        value *= 1.609323529411765  # convert mile to km
-        self.message = self.root.ids.output_label.text = f"{value:.3f}"
+    def handle_calculation(self, input_number):
+        """Convert miles to kilometres, output result to output label."""
+        miles = self.convert_to_number(input_number)
+        miles *= MILES_TO_KM_RATE
+        self.message = self.root.ids.output_label.text = f"{miles:.3f}"
 
-    def handle_increment(self, increment_value):
+    def handle_increment(self, input_number, increment_value):
         """Increase/decrease current entry by 1."""
-        input_value = int(self.root.ids.input_number.text)
+        input_value = self.convert_to_number(input_number)
         input_value = input_value + int(increment_value)
         self.root.ids.input_number.text = str(input_value)
 
