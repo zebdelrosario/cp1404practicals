@@ -2,13 +2,15 @@
 Kivy GUI program to convert miles to kilometres.
 Zeb del Rosario, Bachelor of IT
 Started 26/04/2021"""
-from kivy.app import App, StringProperty
+from kivy.app import App
+from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.core.window import Window
 
 __author__ = "Zeb del Rosario"
 
 MILES_TO_KM_RATE = 1.609323529411765
+
 
 class ConvertMilesToKmApp(App):
     """ConvertMilesToKmApp is a Kivy app that converts miles to km."""
