@@ -31,5 +31,13 @@ class ConvertMilesToKmApp(App):
         input_value = input_value + int(increment_value)
         self.root.ids.input_number.text = str(input_value)
 
+    @staticmethod
+    def convert_to_number(text):
+        """Convert text to 0 if invalid."""
+        try:
+            return float(text)
+        except ValueError:
+            return 0.0
+
 
 ConvertMilesToKmApp().run()
