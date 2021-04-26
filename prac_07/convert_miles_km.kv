@@ -3,6 +3,7 @@ BoxLayout:
     BoxLayout:
         orientation: 'horizontal'
         TextInput:
+            id: input_number
             text: ''
             size_hint: (3, 1)
         BoxLayout:
@@ -12,7 +13,8 @@ BoxLayout:
             Button:
                 text: "Down"
     Button:
-        text: "Convert m to km"
+        text: "Convert miles to kilometres"
+        on_press: app.handle_calculation(int(input_number.text))
     Label:
-        text: "Placeholder"
+        id: output_label
         color: (1, 1, 0, 1)
