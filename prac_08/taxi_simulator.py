@@ -11,10 +11,13 @@ def main():
     """Taxi simulator: choose from a list of Taxis and drive."""
     print("Let's drive!\nq)uit, c)hoose taxi, d)rive")
     taxis = generate_taxis(AMOUNT_OF_TAXIS)
+    current_taxi = ""
     menu_choice = get_valid_choice(">>> ")
     while menu_choice != MENU_CHOICES[0]:
         if menu_choice == MENU_CHOICES[1]:  # Choose taxi
             display_taxis(taxis)
+            taxi_choice = get_valid_number("Choose taxi: ")
+            current_taxi = taxis[taxi_choice]
         elif menu_choice == MENU_CHOICES[2]:  # Drive taxi
             pass
         menu_choice = get_valid_choice(">>> ")
@@ -27,6 +30,16 @@ def display_taxis(taxis):
     for taxi in taxis:
         print(f"{i} - {taxi.__str__()}")
         i += 1
+
+
+def get_valid_number(prompt):
+    """Prompt user until a valid number is entered."""
+    user_choice = int(input(prompt))
+    # choice must be in range 0 - AMOUNT OF TAXIS
+    while user_choice < (AMOUNT_OF_TAXIS - 1) or user_choice > AMOUNT_OF_TAXIS:
+        print("Error; enter a valid number!")
+        user_choice = int(input(prompt))
+    return user_choice
 
 
 def get_valid_choice(prompt):
