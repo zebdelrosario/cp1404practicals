@@ -21,7 +21,10 @@ def main():
             taxi_choice = get_valid_number("Choose taxi: ")
             current_taxi = taxis[taxi_choice]
         elif menu_choice == MENU_CHOICES[2]:  # Drive taxi
-            current_bill += drive_taxi(current_taxi)
+            if current_taxi is not None:
+                current_bill += drive_taxi(current_taxi)
+            else:
+                pass
         print(f"Bill to date: ${current_bill:.2f}")
         print("q)uit, c)hoose taxi, d)rive")
         menu_choice = get_valid_choice(">>> ")
