@@ -9,6 +9,7 @@ def main():
     taxi_one.drive(18)
     print(f"Fare distance: {taxi_one.current_fare_distance:>8} km")
     print(f"Current fare cost: $ {taxi_one.get_fare()}")
+    print(taxi_one)
 
 
 main()
