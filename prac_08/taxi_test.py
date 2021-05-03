@@ -2,7 +2,7 @@ from prac_08.car import Car
 from prac_08.taxi import Taxi
 
 # Print the taxi's details and the current fare
-new_taxi = Taxi("Prius 1", 100, 1.23)
+new_taxi = Taxi("Prius 1", 100)
 new_taxi.drive(40)
 print(f"""Taxi's details:
 {"Name:":>10} {new_taxi.name}
