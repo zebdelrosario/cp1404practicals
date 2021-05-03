@@ -8,12 +8,12 @@ class SilverServiceTaxi(Taxi):
     def __init__(self, name, fuel, fanciness):
         """Initialise subclass SilverServiceTaxi, inheriting from Taxi parent."""
         super().__init__(name, fuel)
-        self.fanciness = float(fanciness * self.price_per_km)
+        self.price_per_km = float(fanciness * self.price_per_km)
         self.flagfall_count = 0
 
     def __str__(self):
-        return f"{self.name}, fuel={self.fuel}, odo={self.odometer}, {self.current_fare_distance}km on current fare, " \
-               f"${self.price_per_km} plus flagfall of ${self.flagfall}"
+        """Return a string similar to parent class, with child-specific attributes."""
+        return f"{super().__str__()} plus flagfall of ${self.flagfall:.2f}"
 
     def start_fare(self):
         """Start recording fare cost."""
@@ -21,4 +21,4 @@ class SilverServiceTaxi(Taxi):
 
     def get_fare(self):
         """Calculate fare cost, based on current distance."""
-        return (super().get_fare() * self.fanciness) + (self.flagfall_count * self.flagfall)
+        return super().get_fare() + (self.flagfall * self. flagfall_count)
