@@ -17,10 +17,8 @@ def main():
 
     # Make a new directory
     # The next time you run this, it will crash if the directory exists
-    try:
-        os.mkdir('temp')
-    except FileExistsError:
-        pass
+    # TODO: Use exception handling to avoid the crash (just pass)
+    os.mkdir('temp')
 
     # Loop through each file in the (current) directory
     for filename in os.listdir('.'):
