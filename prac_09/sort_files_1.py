@@ -4,23 +4,37 @@ Author: Zeb del Rosario
 Start date: 13/05/2021
 """
 import os
+import shutil
 
-ROOT_DIRECTORY = os.getcwd()
+ROOT_DIRECTORY = os.getcwd() + "\\" + "FilesToSort"  # force cwd to be set to "FilesToSort"
 
 
 def main():
     """Creat subdirectories for file extensions and move corresponding files into those directories."""
     print(f"Current directory: {ROOT_DIRECTORY}")  # this assumes the program is inside the directory to be changed
     print("-" * 50, f"\nFiles inside {ROOT_DIRECTORY}:")
-    file_paths = determine_file_paths(ROOT_DIRECTORY)
-    file_extensions = determine_file_extensions(file_paths)
+    source_file_paths = determine_file_paths(ROOT_DIRECTORY)
+    file_extensions = determine_file_extensions(source_file_paths)
     for file_extension in file_extensions:
         create_new_directory(ROOT_DIRECTORY, file_extension)
+    for source_file_path in source_file_paths:
+        move_files_to_directory(source_file_path, file_extensions)
     print(file_extensions)
 
 
-def move_files_to_directory(root_directory, destination_directory):
+def move_files_to_directory(source_file_path, file_extensions):
     """Move files from given root to destination directory."""
+    for index, file_extension in enumerate(file_extensions):
+        if source_file_path.endswith(file_extension):
+            destination_directory = ROOT_DIRECTORY + f"\\{file_extension}"
+            try:
+                shutil.move(source_file_path, destination_directory)
+            except FileExistsError:
+                pass
+            # try:
+            #     shutil.move(source_file_path, fr'{destination_directory}')
+            # except FileExistsError:
+            #     pass
 
 
 def create_new_directory(root_directory, file_extension):
