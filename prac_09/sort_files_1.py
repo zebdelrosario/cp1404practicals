@@ -31,10 +31,6 @@ def move_files_to_directory(source_file_path, file_extensions):
                 shutil.move(source_file_path, destination_directory)
             except FileExistsError:
                 pass
-            # try:
-            #     shutil.move(source_file_path, fr'{destination_directory}')
-            # except FileExistsError:
-            #     pass
 
 
 def create_new_directory(root_directory, file_extension):
