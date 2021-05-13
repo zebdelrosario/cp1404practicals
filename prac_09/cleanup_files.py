@@ -26,35 +26,19 @@ def main():
         if os.path.isdir(filename):
             continue
 
-        get_fixed_filename(filename)
-        # new_name = get_fixed_filename(filename)
-        # print("Renaming {} to {}".format(filename, new_name))
+        new_name = get_fixed_filename(filename)
+        print("Renaming {} to {}".format(filename, new_name))
 
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
-    # new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
-
-    # return new_filenames
-
-
-    # return new_name
-
-
-def demo_walk():
-    """Process all subdirectories using os.walk()."""
-    os.chdir('Lyrics')
-    for directory_name, subdirectories, filenames in os.walk('.'):
-        print("Directory:", directory_name)
-        print("\tcontains subdirectories:", subdirectories)
-        print("\tand files:", filenames)
-        print("(Current working directory is: {})".format(os.getcwd()))
-        # get filepath for every filename and rename
-        for filename in filenames:
-            file_path = os.path.join(directory_name, filename)
-            os.rename(file_path, file_path)
-            print(f"{file_path} has been renamed to {file_path}")
+    underscored_name = filename.replace(" ", "_").replace(".TXT", ".txt").strip(".txt")
+    if "_" not in underscored_name:  # if filename is not separated
+        separated_filename = "".join(" " + char if char.isupper() else char for char in underscored_name).strip(" ").split(" ")
+        fixed_name = "_".join(separated_filename)
+    else:  # if filename is separated in any way
+        fixed_name = underscored_name.title()
+    return fixed_name + ".txt"
 
 
 main()
-# demo_walk()
