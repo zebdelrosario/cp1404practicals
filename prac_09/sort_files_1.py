@@ -15,10 +15,10 @@ def main():
     print("-" * 50, f"\nFiles inside {ROOT_DIRECTORY}:")
     source_file_paths = determine_file_paths(ROOT_DIRECTORY)
     file_extensions = determine_file_extensions(source_file_paths)
-    for file_extension in file_extensions:
-        create_new_directory(ROOT_DIRECTORY, file_extension)
-    for source_file_path in source_file_paths:
-        move_files_to_directory(source_file_path, file_extensions)
+    # for file_extension in file_extensions:
+    #     create_new_directory(ROOT_DIRECTORY, file_extension)
+    # for source_file_path in source_file_paths:
+    #     move_files_to_directory(source_file_path, file_extensions)
     print(file_extensions)
 
 
@@ -52,7 +52,7 @@ def determine_file_paths(root_directory):
 def determine_file_extensions(file_paths):
     """Split file extensions from files inside given file paths."""
     roots_extensions = [os.path.splitext(file_path) for file_path in file_paths]  # split file path from ext
-    file_extensions = [file_extension for root, file_extension in roots_extensions]  # store ext in list
+    file_extensions = [file_extension.strip(".") for root, file_extension in roots_extensions]  # store ext in list
     for file_extension in file_extensions:  # remove multiples of extension
         if file_extensions.count(file_extension) > 1:
             file_extensions.remove(file_extension)
