@@ -3,6 +3,8 @@ CP1404/CP5632 Practical
 Testing demo using assert and doctest
 """
 
+import doctest
+
 from prac_06.car import Car
 
 
@@ -10,7 +12,6 @@ def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
     strings = ["".join(s) for i in range(n)]
     return " ".join(strings)
-
 
 
 def is_long_word(word, length=5):
@@ -39,19 +40,16 @@ def run_tests():
     # this should pass (no output)
     test_car = Car()
     assert test_car.odometer == 0, "Car does not set odometer correctly"
-
-    # TODO: 2. write assert statements to show if Car sets the fuel correctly
-    # Note that Car's __init__ function sets the fuel in one of two ways:
-    # using the value passed in or the default
-    # You should test both of these
-    test_car = Car(fuel=10)
+    assert test_car.fuel == 0, "Car does not set default fuel correctly"
+    test_car.add_fuel(50)
+    assert test_car.fuel == 50, "Car does not set fuel correctly"
 
 
 run_tests()
 
 # TODO: 3. Uncomment the following line and run the doctests
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
-# doctest.testmod()
+doctest.testmod()
 
 # TODO: 4. Fix the failing is_long_word function
 # (don't change the tests, change the function!)
