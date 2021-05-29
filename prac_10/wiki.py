@@ -8,9 +8,10 @@ def main():
     while user_input != "":
         try:
             search_result = wikipedia.page(user_input)
-            print(f"Search results: {search_result.summary}")
+            print(f"Title: {search_result.title}\nSummary: {search_result.summary}\nURL:{search_result.url}")
         except wikipedia.exceptions.DisambiguationError:
             print("Too many potential pages; please enter a more specific page!")
         user_input = input("Enter page title/search phrase: \n>")
+
 
 main()
