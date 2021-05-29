@@ -8,7 +8,9 @@ from prac_06.car import Car
 
 def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
-    return s * n
+    strings = ["".join(s) for i in range(n)]
+    return " ".join(strings)
+
 
 
 def is_long_word(word, length=5):
@@ -30,9 +32,7 @@ def run_tests():
     assert repeat_string("Python", 1) == "Python"
     # the test below should fail
     assert repeat_string("hi", 2) == "hi hi"
-
-    # TODO: 1. fix the repeat_string function above so that it passes the failing test
-    # Hint: "-".join(["yo", "yo"] -> "yo-yo"
+    repeat_string("hi", 2)
 
     # assert test with custom message,
     # used to see if Car's init method sets the odometer correctly
