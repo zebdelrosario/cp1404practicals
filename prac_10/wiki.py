@@ -6,9 +6,11 @@ def main():
     """Ask for title or search phrase, and print summary."""
     user_input = input("Enter page title/search phrase: \n>")
     while user_input != "":
-        search_result = wikipedia.page(user_input, auto_suggest=False)
-        print(f"Search results: {search_result.summary}")
+        try:
+            search_result = wikipedia.page(user_input)
+            print(f"Search results: {search_result.summary}")
+        except wikipedia.exceptions.DisambiguationError:
+            print("Too many potential pages; please enter a more specific page!")
         user_input = input("Enter page title/search phrase: \n>")
-
 
 main()
