@@ -27,6 +27,22 @@ def is_long_word(word, length=5):
     return len(word) >= length
 
 
+def phrase_to_sentence(phrase):
+    """
+    Format a phrase as a sentence e.g.: from "hello" to "Hello"
+    >>> phrase_to_sentence("hello")
+    'Hello.'
+    >>> phrase_to_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> phrase_to_sentence("tHiS iS a sEnTenCE")
+    'This is a sentence.'
+    """
+    sentence = phrase.capitalize()
+    if sentence[-1] == ".":
+        return sentence
+    return sentence + '.'
+
+
 def run_tests():
     """Run the tests on the functions."""
     # assert test with no message - used to see if the function works properly
@@ -49,13 +65,3 @@ run_tests()
 
 doctest.testmod()
 
-
-# TODO: 5. Write and test a function to format a phrase as a sentence,
-# starting with a capital and ending with a single full stop.
-# Important: start with a function header and just use pass as the body
-# then add doctests for 3 tests:
-# 'hello' -> 'Hello.'
-# 'It is an ex parrot.' -> 'It is an ex parrot.'
-# and one more you decide (one that is valid!)
-# test this and watch the tests fail
-# then write the body of the function so that the tests pass
